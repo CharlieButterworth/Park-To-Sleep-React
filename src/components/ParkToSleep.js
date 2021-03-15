@@ -7,7 +7,7 @@ import { Register } from "./auth/Register"
 export const ParkToSleep= () => (
     <>
         <Route render={() => {
-            if (localStorage.getItem("lu_token")) {
+            if (localStorage.getItem("pts_token")) {
                 return <>
                     <Route render={NavBar} />
                     <Route render={props => <ApplicationViews {...props} />} />
