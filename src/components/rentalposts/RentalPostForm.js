@@ -11,7 +11,7 @@ export const RentalPostForm = (props) => {
     description: "",
     maxLength: "",
     city: "",
-    state: 0,
+    state: "",
     address: "",
     start_time: "",
     end_time: ""

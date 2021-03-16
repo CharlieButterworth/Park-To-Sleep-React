@@ -21,7 +21,11 @@ const getRentalPosts = () => {
   }
 
 const getRentalPostById = (id) => {
-        return fetch(`http://localhost:8000/rentalposts/${id}`)
+        return fetch(`http://localhost:8000/rentalposts/${id}`, {
+            headers: {
+        "Authorization": `Token ${localStorage.getItem("pts_token")}`,
+      },
+        })
             .then(res => res.json())
             .then(setPost)
     }
@@ -41,7 +45,7 @@ const addRentalPost = post => {
     }
 
 const deleteRentalPost = (id) => {
-        return fetch(`http://localhost:8000/posts/${id}`, {
+        return fetch(`http://localhost:8000/rentalposts/${id}`, {
             method: "DELETE"
         })
             .then(getRentalPosts)
