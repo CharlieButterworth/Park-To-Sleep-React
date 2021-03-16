@@ -4,14 +4,17 @@ import { useHistory } from "react-router-dom"
 
 export const RentalPostForm = (props) => {
   const history = useHistory()
-  const { addPost, getSinglePost, Posts, updatePost } = useContext(RentalPostContext)
+  const { addRentalPost, getSingleRentalPost, Posts, updatePost, getRentalPosts } = useContext(RentalPostContext)
 
 
-  const [currentPost, setCurrentPost] = useState({
-    title: "",
-    postImage: "",
-    content: "",
-    category: 0,
+  const [currentRentalPost, setCurrentRentalPost] = useState({
+    description: "",
+    maxLength: "",
+    city: "",
+    state: 0,
+    address: "",
+    start_time: "",
+    end_time: ""
   })
 
   /*
@@ -20,47 +23,55 @@ export const RentalPostForm = (props) => {
         provide some default values.
     */
 
-  useEffect(() => {
-    if ("postId" in props.match.params) {
-      getSinglePost(props.match.params.postId).then((post) => {
-        setCurrentPost({
-          title: post.title,
-          postImage: post.postImage,
-          content: post.content,
-          category: post.category,
-        })
-      })
-    }
-  }, [props.match.params.postId])
+//   useEffect(() => {
+//     if ("postId" in props.match.params) {
+//       getSingleRentalPost(props.match.params.postId).then((post) => {
+//         setCurrentRentalPost({
+//           description: "",
+//         maxLength: "",
+//         city: "",
+//         state: "",
+//         address: "",
+//         start_time: "",
+//         end_time: ""
+//         })
+//       })
+//     }
+//   }, [props.match.params.postId])
+
+
+//   useEffect(() => {
+//       getRentalPosts()
+//   }, [])
 
  
 
 
 
   /*
-  Update the `currentGame` state variable every time
+  Update the `currentRentalPost` state variable every time
   the state of one of the input fields changes.
   */
-  const changePostState = (domEvent) => {
-    const newPostState = Object.assign({}, currentPost)
-    newPostState[domEvent.target.name] = domEvent.target.value
-    setCurrentPost(newPostState)
+  const changeRentalPostState = (domEvent) => {
+    const newRentalPostState = Object.assign({}, currentRentalPost)
+    newRentalPostState[domEvent.target.name] = domEvent.target.value
+    setCurrentRentalPost(newRentalPostState)
   }
 
   return (
-    <form className="PostForm">
-      <h2 className="PostForm__title">Post</h2>
+    <form className="RentalPostForm">
+      <h2 className="RentalPostForm__title">Rental Post</h2>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="title">Title: </label>
+          <label htmlFor="description">Description: </label>
           <input
             type="text"
-            name="title"
+            name="description"
             required
             autoFocus
             className="form-control"
-            value={currentPost.title}
-            onChange={changePostState}
+            value={currentRentalPost.description}
+            onChange={changeRentalPostState}
           />
         </div>
       </fieldset>
@@ -68,34 +79,90 @@ export const RentalPostForm = (props) => {
 
       <fieldset>
         <div className="form-group">
-          <label htmlFor="content">Post Body: </label>
+          <label htmlFor="content">Max Length: </label>
           <input
-            type="text"
-            name="content"
+            type="number"
+            name="max_length"
             required
             className="form-control"
-            value={currentPost.content}
-            onChange={changePostState}
+            value={currentRentalPost.max_length}
+            onChange={changeRentalPostState}
           />
         </div>
       </fieldset>
 
       <fieldset>
         <div className="form-group">
-          <label htmlFor="content">Image URL: </label>
+          <label htmlFor="content">City: </label>
           <input
             type="text"
-            name="postImage"
+            name="city"
             required
             className="form-control"
-            value={currentPost.postImage}
-            onChange={changePostState}
+            value={currentRentalPost.city}
+            onChange={changeRentalPostState}
+          />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <div className="form-group">
+          <label htmlFor="content">State: </label>
+          <input
+            type="text"
+            name="state"
+            required
+            className="form-control"
+            value={currentRentalPost.state}
+            onChange={changeRentalPostState}
+          />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <div className="form-group">
+          <label htmlFor="content">Address: </label>
+          <input
+            type="text"
+            name="address"
+            required
+            className="form-control"
+            value={currentRentalPost.address}
+            onChange={changeRentalPostState}
+          />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <div className="form-group">
+          <label htmlFor="content">Start Time: </label>
+          <input
+            type="datetime-local"
+            name="start_time"
+            required
+            className="form-control"
+            value={currentRentalPost.start_time}
+            onChange={changeRentalPostState}
+          />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <div className="form-group">
+          <label htmlFor="content">End Time: </label>
+          <input
+            type="datetime-local"
+            name="end_time"
+            required
+            className="form-control"
+            value={currentRentalPost.end_time}
+            onChange={changeRentalPostState}
           />
         </div>
       </fieldset>
 
       {/* You create the rest of the input fields for each game property */}
-      {"rare_user_id" in props.match.params ? (
+      {"pts_token" in props.match.params ? (
         <button
           onClick={(evt) => {
             // Prevent form from being submitted
@@ -103,12 +170,14 @@ export const RentalPostForm = (props) => {
 
             // Send POST request to your API
             updatePost({
-              id: parseInt(props.match.params.postId),
-              title: currentPost.title,
-              postImage: currentPost.postImage,
-              content: currentPost.content,
-              category: parseInt(currentPost.category),
-            }).then(() => history.push("/posts"))
+              description: currentRentalPost.description,
+              maxLength: currentRentalPost.max_length,
+              city: currentRentalPost.city,
+              state: currentRentalPost.state,
+              address: currentRentalPost.address,
+              start_time: currentRentalPost.start_time,
+              end_time: currentRentalPost.end_time
+            }).then(() => history.push("/rentalposts"))
           }}
           className="btn btn-primary"
         >
@@ -122,16 +191,19 @@ export const RentalPostForm = (props) => {
             evt.preventDefault()
 
             // Send POST request to your API
-            addPost({
-              title: currentPost.title,
-              postImage: currentPost.postImage,
-              content: currentPost.content,
-              category: currentPost.category,
-            }).then(() => history.push("/posts"))
+            addRentalPost({  
+              description: currentRentalPost.description,
+              maxLength: currentRentalPost.max_length,
+              city: currentRentalPost.city,
+              state: currentRentalPost.state,
+              address: currentRentalPost.address,
+              start_time: currentRentalPost.start_time,
+              end_time: currentRentalPost.end_time
+            }).then(() => history.push("/rentalposts"))
           }}
           className="btn btn-primary"
         >
-          Create
+          Save
         </button>
       )}
     </form>
