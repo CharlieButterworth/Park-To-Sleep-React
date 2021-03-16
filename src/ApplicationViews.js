@@ -21,10 +21,10 @@ export const ApplicationViews = (props) => {
                </Route>
            </RentalPostProvider>
 
-           {/* <RentalPostProvider>
+           <RentalPostProvider>
                <Route exact path="/createspot">
                    <RentalPostForm {...props} />
                </Route>
-           </RentalPostProvider> */}
+           </RentalPostProvider>
     </>
 }
