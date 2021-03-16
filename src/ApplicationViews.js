@@ -1,5 +1,6 @@
 import React from "react"
 import { Route } from "react-router-dom"
+import { RentalPostForm } from "./components/rentalposts/RentalPostForm"
 import { RentalPostProvider } from "./components/rentalposts/RentalPostProvider"
 import { RentalSpotsAvailable} from "./components/rentalposts/RentalSpotsAvailable"
 
@@ -19,5 +20,11 @@ export const ApplicationViews = (props) => {
                    <RentalSpotsAvailable {...props} />
                </Route>
            </RentalPostProvider>
+
+           {/* <RentalPostProvider>
+               <Route exact path="/createspot">
+                   <RentalPostForm {...props} />
+               </Route>
+           </RentalPostProvider> */}
     </>
 }
