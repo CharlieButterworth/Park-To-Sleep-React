@@ -11,7 +11,7 @@ export const RentalPostForm = (props) => {
     description: "",
     maxLength: "",
     city: "",
-    state: 0,
+    state: "",
     address: "",
     start_time: "",
     end_time: ""
@@ -192,6 +192,7 @@ export const RentalPostForm = (props) => {
 
             // Send POST request to your API
             addRentalPost({  
+              pts_user: currentRentalPost.pts_user,
               description: currentRentalPost.description,
               maxLength: currentRentalPost.max_length,
               city: currentRentalPost.city,

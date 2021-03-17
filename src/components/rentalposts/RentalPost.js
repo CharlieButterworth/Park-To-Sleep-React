@@ -1,11 +1,16 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import "./RentalPost.css"
 
-export const RentalPost = ({ rentalpost, rentee, props }) => {
+
+export const RentalPost = ({ rentalpost, props }) => {
     if (localStorage.getItem("pts_token")) {
 
         return (
             <section className="rentalpostCard">
+                <Link to={{ pathname: `/rentalposts/${rentalpost.id}`, state: { chosenPost: rentalpost } }}>
+                        Title: {rentalpost.description}
+                    </Link>
                <p>Description: {rentalpost.description} </p>
                 <p>Max Length: {rentalpost.max_length} ft</p>
                 <p>City: {rentalpost.city}</p>

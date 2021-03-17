@@ -6,7 +6,7 @@ export const RentalPostContext = React.createContext()
 export const RentalPostProvider = (props) => {
 
   const [posts, setRentalPosts] = useState([])
-  const [post, setPost] = useState({})
+  const [post, setRentalPost] = useState({})
 
 
 
@@ -21,9 +21,13 @@ const getRentalPosts = () => {
   }
 
 const getRentalPostById = (id) => {
-        return fetch(`http://localhost:8000/rentalposts/${id}`)
+        return fetch(`http://localhost:8000/rentalposts/${id}`, {
+            headers: {
+        "Authorization": `Token ${localStorage.getItem("pts_token")}`,
+      },
+        })
             .then(res => res.json())
-            .then(setPost)
+            .then(setRentalPost)
     }
 
 const addRentalPost = post => {
@@ -41,7 +45,7 @@ const addRentalPost = post => {
     }
 
 const deleteRentalPost = (id) => {
-        return fetch(`http://localhost:8000/posts/${id}`, {
+        return fetch(`http://localhost:8000/rentalposts/${id}`, {
             method: "DELETE"
         })
             .then(getRentalPosts)
