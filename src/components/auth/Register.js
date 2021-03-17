@@ -6,10 +6,14 @@ export const Register = (props) => {
     const firstName = React.createRef()
     const lastName = React.createRef()
     const email = React.createRef()
-    const bio = React.createRef()
     const password = React.createRef()
     const verifyPassword = React.createRef()
     const passwordDialog = React.createRef()
+    const city = React.createRef()
+    const state = React.createRef()
+    const address = React.createRef()
+    const phone = React.createRef()
+    const country = React.createRef()
 
     const handleRegister = (e) => {
         e.preventDefault()
@@ -19,9 +23,14 @@ export const Register = (props) => {
                 "username": email.current.value,
                 "first_name": firstName.current.value,
                 "last_name": lastName.current.value,
-                "bio": bio.current.value,
                 "email": email.current.value,
-                "password": password.current.value
+                "password": password.current.value,
+                "city": city.current.value, 
+                "state": state.current.value,
+                "country": country.current.value,
+                "address": address.current.value,
+                "phone": phone.current.value
+
             }
 
             return fetch("http://127.0.0.1:8000/register", {
@@ -67,16 +76,32 @@ export const Register = (props) => {
                     <input ref={email} type="email" name="email" className="form-control" placeholder="Email address" required />
                 </fieldset>
                 <fieldset>
+                    <label htmlFor="address"> Address </label>
+                    <textarea ref={address} name="address" className="form-control" placeholder="address" />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="city"> City </label>
+                    <textarea ref={city} name="city" className="form-control" placeholder="City" />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="state"> State </label>
+                    <textarea ref={state} name="state" className="form-control" placeholder="State" />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="country"> Country </label>
+                    <textarea ref={country} name="country" className="form-control" placeholder="Country" />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="phone"> Phone Number </label>
+                    <textarea ref={phone} name="phone" className="form-control" placeholder="Phone Number" />
+                </fieldset>
+                <fieldset>
                     <label htmlFor="inputPassword"> Password </label>
                     <input ref={password} type="password" name="password" className="form-control" placeholder="Password" required />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="verifyPassword"> Verify Password </label>
                     <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="verifyPassword"> Tell us about you! </label>
-                    <textarea ref={bio} name="bio" className="form-control" placeholder="Let other gamers know a little bit about you..." />
                 </fieldset>
                 <fieldset style={{
                     textAlign: "center"

@@ -6,7 +6,7 @@ export const RentalPostContext = React.createContext()
 export const RentalPostProvider = (props) => {
 
   const [posts, setRentalPosts] = useState([])
-  const [post, setPost] = useState({})
+  const [post, setRentalPost] = useState({})
 
 
 
@@ -27,7 +27,7 @@ const getRentalPostById = (id) => {
       },
         })
             .then(res => res.json())
-            .then(setPost)
+            .then(setRentalPost)
     }
 
 const addRentalPost = post => {

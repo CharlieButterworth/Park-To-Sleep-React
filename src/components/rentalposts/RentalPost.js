@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import "./RentalPost.css"
 
 
-export const RentalPost = ({ rentalpost, rentee, props }) => {
+export const RentalPost = ({ rentalpost, props }) => {
     if (localStorage.getItem("pts_token")) {
 
         return (
