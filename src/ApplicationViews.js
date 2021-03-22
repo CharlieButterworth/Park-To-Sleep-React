@@ -6,6 +6,8 @@ import { RentalPostForm } from "./components/rentalposts/RentalPostForm"
 import { RentalPostProvider } from "./components/rentalposts/RentalPostProvider"
 import { RentalSpotsAvailable} from "./components/rentalposts/RentalSpotsAvailable"
 import { BookingForm } from "./components/booking/BookingForm"
+import { BookingList } from "./components/booking/BookingList"
+import { BookingProvider } from "./components/booking/BookingProvider"
 
 
 
@@ -43,10 +45,16 @@ export const ApplicationViews = (props) => {
            </RentalPostProvider>
 
            <RentalPostProvider>
-               <Route exact path="/bookingform/:id(\d+)">
+               <Route exact path="/bookingform/:id(\d+)/book">
                    <BookingForm {...props} />
                </Route>
            </RentalPostProvider>
+
+           <BookingProvider>
+               <Route exact path="/bookings">
+                   <BookingList {...props} />
+               </Route>
+           </BookingProvider>
 
            
            

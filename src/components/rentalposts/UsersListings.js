@@ -32,19 +32,4 @@ export const ListingList = (props) => {
         </>
     )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

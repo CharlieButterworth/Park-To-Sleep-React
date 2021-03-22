@@ -15,11 +15,17 @@ export const RentalPostDetails = (rentalpost, props) => {
     
     
     useEffect(() => {
+        
         getRentalPostById(location.state.chosenPost.id)
-            .then(setRentalPost)
+            
+            
             
 
     }, [])
+
+
+
+    
     return (
         <>
             <section className="post">
@@ -31,11 +37,11 @@ export const RentalPostDetails = (rentalpost, props) => {
                 <h3 className="post__title">Address: {post.address}</h3>
                 <h3 className="post__title">Date/Time Available: {post.start_time}</h3>
                 <h3 className="post__title">Date/Time Closing: {post.end_time}</h3>
-                <h3 className="post__title">First Name: {post.rentee.pts_user.first_name}</h3>
-                <h3 className="post__title">Last Name: {post.rentee.pts_user.last_name}</h3>
+                <h3 className="post__title">First Name: {location.state.chosenPost.rentee.pts_user.first_name}</h3>
+                <h3 className="post__title">Last Name: {location.state.chosenPost.rentee.pts_user.last_name}</h3>
 
                 <button onClick={() => {
-                    history.push(`/bookingform/${location.state.chosenPost.id}`)
+                    history.push(`/bookingform/${location.state.chosenPost.id}/book`)
                 }}>Book!</button>
 
                 <button className="btn--release"

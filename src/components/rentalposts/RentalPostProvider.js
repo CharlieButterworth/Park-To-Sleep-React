@@ -65,14 +65,16 @@ const getRentalPostsByUserId = (userId) => {
       .then(setRentalPosts)
   }
 
-const bookSpot = rentalpost => {
-        return fetch(`http://localhost:8000/rentalpost/${ rentalpost }/book`, {
+const bookSpot = post => {
+    debugger
+        return fetch(`http://localhost:8000/rentalposts/${ post }/book`, {
             method: "POST",
             headers:{
                 "Authorization": `Token ${localStorage.getItem("pts_token")}`
             }
         })
             .then(response => response.json())
+            .then(getRentalPosts)
     }
 
 
