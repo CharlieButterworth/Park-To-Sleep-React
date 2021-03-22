@@ -16,6 +16,7 @@ export const RentalPost = ({ rentalpost, props }) => {
                 <p>City: {rentalpost.city}</p>
                 <p>State: {rentalpost.state}</p>
                 <p>Address: {rentalpost.address}</p>
+                {/* <p>Phone Number: {rentalpost.phone}</p> */}
                 <p>Start Time: {rentalpost.start_time}</p>
                 <p>End Time: {rentalpost.end_time}</p>
                 <p>First Name: {rentalpost.rentee.pts_user.first_name}</p>

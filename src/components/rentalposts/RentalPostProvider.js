@@ -46,8 +46,34 @@ const addRentalPost = post => {
 
 const deleteRentalPost = (id) => {
         return fetch(`http://localhost:8000/rentalposts/${id}`, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+        "Authorization": `Token ${localStorage.getItem("pts_token")}`,
+      },
         })
+            .then(getRentalPosts)
+    }
+
+const getRentalPostsByUserId = (userId) => {
+    userId = localStorage.getItem("pts_token")
+    return fetch(`http://localhost:8000/rentalposts?sortby=user`, {
+      headers: {
+        "Authorization": `Token ${localStorage.getItem("pts_token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then(setRentalPosts)
+  }
+
+const bookSpot = post => {
+    debugger
+        return fetch(`http://localhost:8000/rentalposts/${ post }/book`, {
+            method: "POST",
+            headers:{
+                "Authorization": `Token ${localStorage.getItem("pts_token")}`
+            }
+        })
+            .then(response => response.json())
             .then(getRentalPosts)
     }
 
@@ -56,7 +82,7 @@ const deleteRentalPost = (id) => {
    return (
     <RentalPostContext.Provider
       value={{
-        getRentalPosts, posts, getRentalPostById, post, addRentalPost, deleteRentalPost
+        getRentalPosts, posts, getRentalPostById, post, addRentalPost, deleteRentalPost, getRentalPostsByUserId, bookSpot
       }}
     >
       {props.children}
