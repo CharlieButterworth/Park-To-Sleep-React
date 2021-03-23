@@ -65,16 +65,30 @@ const getRentalPostsByUserId = (userId) => {
       .then(setRentalPosts)
   }
 
-const bookSpot = post => {
-    debugger
+
+ const updatePost = (post) => {
+    return fetch(`http://localhost:8000/posts/${post.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(post),
+    }).then(getRentalPosts)
+  } 
+
+const bookSpot = (date, post) => {
+   
         return fetch(`http://localhost:8000/rentalposts/${ post }/book`, {
             method: "POST",
             headers:{
+                "Content-Type": "application/json",
                 "Authorization": `Token ${localStorage.getItem("pts_token")}`
-            }
+            },
+            body: JSON.stringify(date)
+        
         })
             .then(response => response.json())
-            .then(getRentalPosts)
+            
     }
 
 
@@ -82,7 +96,7 @@ const bookSpot = post => {
    return (
     <RentalPostContext.Provider
       value={{
-        getRentalPosts, posts, getRentalPostById, post, addRentalPost, deleteRentalPost, getRentalPostsByUserId, bookSpot
+        getRentalPosts, posts, getRentalPostById, updatePost, post, addRentalPost, deleteRentalPost, getRentalPostsByUserId, bookSpot
       }}
     >
       {props.children}
