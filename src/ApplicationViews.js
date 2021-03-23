@@ -5,9 +5,10 @@ import { RentalPostDetails } from "./components/rentalposts/RentalPostDetail"
 import { RentalPostForm } from "./components/rentalposts/RentalPostForm"
 import { RentalPostProvider } from "./components/rentalposts/RentalPostProvider"
 import { RentalSpotsAvailable} from "./components/rentalposts/RentalSpotsAvailable"
-import { BookingForm } from "./components/booking/BookingForm"
-import { BookingList } from "./components/booking/BookingList"
-import { BookingProvider } from "./components/booking/BookingProvider"
+import { BookingForm } from "./components/listings/BookingForm"
+import { UsersBookingList } from "./components/listings/UsersBookings"
+import { BookingProvider } from "./components/listings/BookingProvider"
+import { NewlyBooked } from "./components/listings/NewBookings"
 
 
 
@@ -38,11 +39,15 @@ export const ApplicationViews = (props) => {
                </Route>
            </RentalPostProvider>
 
+
+            <BookingProvider>
+
            <RentalPostProvider>
                <Route exact path="/listings">
                    <ListingList {...props} />
                </Route>
            </RentalPostProvider>
+            </BookingProvider>
 
            <RentalPostProvider>
                <Route exact path="/bookingform/:id(\d+)/book">
@@ -52,9 +57,19 @@ export const ApplicationViews = (props) => {
 
            <BookingProvider>
                <Route exact path="/bookings">
-                   <BookingList {...props} />
+                   <UsersBookingList {...props} />
                </Route>
            </BookingProvider>
+
+           <BookingProvider>
+               <Route exact path="/newbookings">
+                   <NewlyBooked {...props} />
+               </Route>
+           </BookingProvider>
+
+           
+
+           
 
            
            

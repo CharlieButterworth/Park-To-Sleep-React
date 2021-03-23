@@ -1,31 +1,32 @@
 import React, { useContext, useEffect } from "react"
 import { BookingContext } from "./BookingProvider"
-import {Booking} from "./Booking"
+import {Booked} from "./Booked"
 
 
 
-export const BookingList = (props) => {
+export const UsersBookingList = (props) => {
 
-    const {bookedspots, getBookedSpots} = useContext(BookingContext)
+    const {booking, bookedspots, setRentalPosts, getBookingsByUserId} = useContext(BookingContext)
 
 
     useEffect(() => {
-        getBookedSpots()
+        getBookingsByUserId()
     }, [])
 
-console.log(bookedspots)
+
 
     return (
         <>
         <h3>My Bookings</h3>
-            <div className="listinglist">
+            <div className="bookinglist">
 
                 {
                     bookedspots.map(b => {
-                       return <Booking key={b.id} booking={b} props={props}/>
+                       return <Booked key={b.id} booked={b} props={props}/>
                         
                     }) 
                 }
+                
 
             </div>
 

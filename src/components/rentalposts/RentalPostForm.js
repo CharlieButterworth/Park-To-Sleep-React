@@ -79,7 +79,7 @@ export const RentalPostForm = (props) => {
 
       <fieldset>
         <div className="form-group">
-          <label htmlFor="content">Max Length: </label>
+          <label htmlFor="content">Max Length (ft): </label>
           <input
             type="number"
             name="max_length"
@@ -161,7 +161,7 @@ export const RentalPostForm = (props) => {
         </div>
       </fieldset>
 
-      {/* You create the rest of the input fields for each game property */}
+      {/* You create the rest of the input fields for each rental property */}
       {"pts_token" in props.match.params ? (
         <button
           onClick={(evt) => {

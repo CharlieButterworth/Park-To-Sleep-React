@@ -21,6 +21,7 @@ export const RentalPost = ({ rentalpost, props }) => {
                 <p>End Time: {rentalpost.end_time}</p>
                 <p>First Name: {rentalpost.rentee.pts_user.first_name}</p>
                 <p>Last Name: {rentalpost.rentee.pts_user.last_name}</p>
+                
             </section>
         )
     } else {

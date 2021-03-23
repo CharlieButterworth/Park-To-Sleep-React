@@ -2,7 +2,7 @@ import React from "react"
 import { Link, useHistory } from "react-router-dom"
 import { useContext, useEffect, useLocation } from "react"
 import { BookingContext } from "./BookingProvider"
-
+import "./Booking.css"
 
 export const Booking = ({booking, props}) => {
     if (localStorage.getItem("pts_token")) {
@@ -11,8 +11,10 @@ export const Booking = ({booking, props}) => {
 
 
         return (
-            <>
+
             
+            <section className="bookingCard">
+
             <h3>Rental Spot Details</h3>
             <p>Spot Owner: {booking.rental_spot.rentee} </p>
             <p>Address: {booking.rental_spot.address} </p>
@@ -25,8 +27,9 @@ export const Booking = ({booking, props}) => {
             <p>Date Booked For: {booking.date} </p>
             <p>Booked By: {booking.renter.pts_user} </p>
 
+            </section>
 
-</>
+
         )
 
 

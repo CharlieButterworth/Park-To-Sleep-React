@@ -3,7 +3,7 @@ import { useLocation, useHistory} from "react-router-dom"
 import { RentalPostContext } from "./RentalPostProvider"
 
 
-export const RentalPostDetails = (rentalpost, props) => {
+export const RentalPostDetails = (rentalpost, props,) => {
     const { post, setRentalPost, getRentalPostById, deleteRentalPost, posts } = useContext(RentalPostContext)
  
     
@@ -13,7 +13,7 @@ export const RentalPostDetails = (rentalpost, props) => {
    console.log(location)
 
     
-    
+    const postId = parseInt(location.state.chosenPost.id)
     useEffect(() => {
         
         getRentalPostById(location.state.chosenPost.id)
@@ -23,8 +23,14 @@ export const RentalPostDetails = (rentalpost, props) => {
 
     }, [])
 
+    const confirmDelete = () => {
+        const d = window.confirm("Would you like to delete this?")
+        if (d === true) {
+            deleteRentalPost(postId).then(() => { props.history.push("/rentalposts") })
+        }
+    }
 
-
+    console.log(location)
     
     return (
         <>

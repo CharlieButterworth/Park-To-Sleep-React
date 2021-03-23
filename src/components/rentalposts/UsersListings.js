@@ -1,19 +1,27 @@
 import React, { useContext, useEffect } from "react"
 import { RentalPostContext } from "./RentalPostProvider"
+import { BookingContext } from "../listings/BookingProvider"
 import {RentalPost} from "./RentalPost"
+import { useLocation, useHistory} from "react-router-dom"
+import { Booking } from "../listings/Booking"
 
 
 
 export const ListingList = (props) => {
 
-    const {posts, setRentalPosts, getRentalPostsByUserId} = useContext(RentalPostContext)
+    const {posts, setRentalPosts, getRentalPostsByUserId, deleteRentalPost} = useContext(RentalPostContext)
+    // const {bookedspots, getBookingsByRentee} = useContext(BookingContext)
 
+
+    const location = useLocation()
+    const history = useHistory()
 
     useEffect(() => {
-        getRentalPostsByUserId()
+        getRentalPostsByUserId();
+        
     }, [])
 
-
+// console.log("BOOKINGS", bookedspots)
 
     return (
         <>
@@ -27,6 +35,11 @@ export const ListingList = (props) => {
                     }) 
                 }
 
+               
+                    
+
+
+                
             </div>
 
         </>
