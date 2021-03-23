@@ -3,36 +3,37 @@ import { useLocation, useHistory} from "react-router-dom"
 import { RentalPostContext } from "./RentalPostProvider"
 
 
-export const RentalPostDetails = (rentalpost, props,) => {
+export const RentalPostDetails = (rentalpost, props, rentee) => {
     const { post, setRentalPost, getRentalPostById, deleteRentalPost, posts } = useContext(RentalPostContext)
  
     
     const location = useLocation()
     const history = useHistory()
-    
-   console.log(location)
+    // const rentee = location.state.chosenPost.rentee.id
+   console.log("LOCATION", location)
 
     
-    const postId = parseInt(location.state.chosenPost.id)
+    
     useEffect(() => {
         
         getRentalPostById(location.state.chosenPost.id)
-            
-            
-            
-
     }, [])
 
-    const confirmDelete = () => {
-        const d = window.confirm("Would you like to delete this?")
-        if (d === true) {
-            deleteRentalPost(postId).then(() => { props.history.push("/rentalposts") })
-        }
+   
+    const confirmDeleteRentalPost = () => {
+    const prompt = window.confirm(
+      "Are you sure you want to delete this post?"
+    );
+    if (prompt === true) {
+      deleteRentalPost(rentalpost.id).then(() => {
+        window.location.href = `/rentalposts/${location.state.chosenPost.id}`;
+      });
     }
+  };
 
-    console.log(location)
-    
-    return (
+    console.log("POSt", post)
+  
+    return post.is_current_user ? (
         <>
             <section className="post">
                 <h3>Post Detail</h3>
@@ -46,14 +47,14 @@ export const RentalPostDetails = (rentalpost, props,) => {
                 <h3 className="post__title">First Name: {location.state.chosenPost.rentee.pts_user.first_name}</h3>
                 <h3 className="post__title">Last Name: {location.state.chosenPost.rentee.pts_user.last_name}</h3>
 
-                <button onClick={() => {
+                {/* <button onClick={() => {
                     history.push(`/bookingform/${location.state.chosenPost.id}/book`)
-                }}>Book!</button>
+                }}>Book!</button> */}
 
                 <button className="btn--release"
                     onClick={() => {
 
-                        deleteRentalPost(location.state.chosenPost.id)
+                        confirmDeleteRentalPost()
                             .then(() => {
                                 history.push("/rentalposts")
                             })
@@ -64,5 +65,25 @@ export const RentalPostDetails = (rentalpost, props,) => {
 
 
         </>
+    ) : (
+        <>
+        <section className="post">
+                <h3>Post Detail (not correct)</h3>
+                <h3 className="post__title">Description: {post.description}</h3>
+                <h3 className="post__title">Max Length: {post.max_length}</h3>
+                <h3 className="post__title">City: {post.city}</h3>
+                <h3 className="post__title">State: {post.state}</h3>
+                <h3 className="post__title">Address: {post.address}</h3>
+                <h3 className="post__title">Date/Time Available: {post.start_time}</h3>
+                <h3 className="post__title">Date/Time Closing: {post.end_time}</h3>
+                <h3 className="post__title">First Name: {location.state.chosenPost.rentee.pts_user.first_name}</h3>
+                <h3 className="post__title">Last Name: {location.state.chosenPost.rentee.pts_user.last_name}</h3>
+
+        <button onClick={() => {
+                    history.push(`/bookingform/${location.state.chosenPost.id}/book`)
+                }}>Book!</button>
+        </section>
+        </>
+
     )
 }

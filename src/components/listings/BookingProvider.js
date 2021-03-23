@@ -24,7 +24,8 @@ const getBookedSpots = () => {
 
   const getBookingsByUserId = (userId) => {
     userId = localStorage.getItem("pts_token")
-    return fetch(`http://localhost:8000/bookedspots?sortby=user`, {
+    return fetch(`http://localhost:8000/bookedspots?sortby=user
+    `, {
       headers: {
         "Authorization": `Token ${localStorage.getItem("pts_token")}`,
       },
