@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from "react"
 import { RentalPostContext } from "./RentalPostProvider"
 import { BookingContext } from "../listings/BookingProvider"
-import {RentalPost} from "./RentalPost"
+import {UsersRentalPost} from "./UsersRentalPost"
 import { useLocation, useHistory} from "react-router-dom"
 import { Booking } from "../listings/Booking"
 
 
 
-export const ListingList = (props) => {
+export const ListingList = (props, rentalpost) => {
 
     const {posts, setRentalPosts, getRentalPostsByUserId, deleteRentalPost} = useContext(RentalPostContext)
     // const {bookedspots, getBookingsByRentee} = useContext(BookingContext)
@@ -15,6 +15,8 @@ export const ListingList = (props) => {
 
     const location = useLocation()
     const history = useHistory()
+
+    
 
     useEffect(() => {
         getRentalPostsByUserId();
@@ -30,16 +32,12 @@ export const ListingList = (props) => {
 
                 {
                     posts.map(p => {
-                       return <RentalPost key={p.id} rentalpost={p} props={props}/>
+                       return <UsersRentalPost key={p.id} rentalpost={p} props={props}/>
                         
                     }) 
-                }
-
-               
                     
-
-
-                
+                }
+        
             </div>
 
         </>

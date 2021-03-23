@@ -177,7 +177,7 @@ export const RentalPostForm = (props) => {
               address: currentRentalPost.address,
               start_time: currentRentalPost.start_time,
               end_time: currentRentalPost.end_time
-            }).then(() => history.push("/rentalposts"))
+            }).then(() => history.push("/availablespots"))
           }}
           className="btn btn-primary"
         >
@@ -200,7 +200,7 @@ export const RentalPostForm = (props) => {
               address: currentRentalPost.address,
               start_time: currentRentalPost.start_time,
               end_time: currentRentalPost.end_time
-            }).then(() => history.push("/rentalposts"))
+            }).then(() => history.push("/availablespots"))
           }}
           className="btn btn-primary"
         >
