@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState,} from "react"
-import { useLocation, useHistory} from "react-router-dom"
+import { useLocation, useHistory, useParams} from "react-router-dom"
 import { RentalPostContext } from "./RentalPostProvider"
 
 
-export const RentalPostDetails = (rentalpost, props, rentee) => {
+export const RentalPostDetails = ({rentalpost, props}) => {
     const { post, setRentalPost, getRentalPostById, deleteRentalPost, posts } = useContext(RentalPostContext)
  
-    
+    const params = useParams()
     const location = useLocation()
     const history = useHistory()
     // const rentee = location.state.chosenPost.rentee.id
-   console.log("LOCATION", location)
+   console.log("PARAMS", useParams())
 
     
     
@@ -31,7 +31,7 @@ export const RentalPostDetails = (rentalpost, props, rentee) => {
     }
   };
 
-    console.log("POSt", post)
+    console.log("PROPS", props)
   
     return post.is_current_user ? (
         <>
@@ -68,7 +68,7 @@ export const RentalPostDetails = (rentalpost, props, rentee) => {
     ) : (
         <>
         <section className="post">
-                <h3>Post Detail (not correct)</h3>
+                <h3>Post Detail</h3>
                 <h3 className="post__title">Description: {post.description}</h3>
                 <h3 className="post__title">Max Length: {post.max_length}</h3>
                 <h3 className="post__title">City: {post.city}</h3>
@@ -82,6 +82,16 @@ export const RentalPostDetails = (rentalpost, props, rentee) => {
         <button onClick={() => {
                     history.push(`/bookingform/${location.state.chosenPost.id}/book`)
                 }}>Book!</button>
+
+        <button
+        onClick={() => {
+          history.push(
+            `/rentalposts/${params.id}/edit`,
+          );
+        }}
+      >
+        Edit Post
+      </button>
         </section>
         </>
 

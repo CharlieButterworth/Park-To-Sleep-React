@@ -3,6 +3,7 @@ import { Route } from "react-router-dom"
 import { ListingList } from "./components/rentalposts/UsersListings"
 import { RentalPostDetails } from "./components/rentalposts/RentalPostDetail"
 import { RentalPostForm } from "./components/rentalposts/RentalPostForm"
+import { EditRentalPostForm } from "./components/rentalposts/RentalPostEdit"
 import { RentalPostProvider } from "./components/rentalposts/RentalPostProvider"
 import { RentalSpotsAvailable} from "./components/rentalposts/RentalSpotsAvailable"
 import { BookingForm } from "./components/listings/BookingForm"
@@ -30,6 +31,12 @@ export const ApplicationViews = (props) => {
            <RentalPostProvider>
                <Route exact path="/createspot">
                    <RentalPostForm {...props} />
+               </Route>
+           </RentalPostProvider>
+
+           <RentalPostProvider>
+               <Route exact path="/rentalposts/:id(\d+)/edit">
+                   <EditRentalPostForm {...props} />
                </Route>
            </RentalPostProvider>
 
