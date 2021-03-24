@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect } from "react"
 import { RentalPostContext } from "./RentalPostProvider.js"
-import { useHistory } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 
-export const RentalPostForm = (props) => {
+export const RentalPostForm = (props, rentalpost) => {
   const history = useHistory()
-  const { addRentalPost, getSingleRentalPost, Posts, updatePost, getRentalPosts } = useContext(RentalPostContext)
+  const params = useParams()
+  const { addRentalPost, getSingleRentalPost, Posts, updatePost, getRentalPosts, setRentalPost, post } = useContext(RentalPostContext)
 
-
+  
   const [currentRentalPost, setCurrentRentalPost] = useState({
     description: "",
     maxLength: "",
@@ -16,36 +17,50 @@ export const RentalPostForm = (props) => {
     start_time: "",
     end_time: ""
   })
-
+  console.log("PROPS", props)
   /*
-        Since the input fields are bound to the values of
-        the properties of this state variable, you need to
-        provide some default values.
-    */
-
-//   useEffect(() => {
-//     if ("postId" in props.match.params) {
-//       getSingleRentalPost(props.match.params.postId).then((post) => {
-//         setCurrentRentalPost({
-//           description: "",
-//         maxLength: "",
-//         city: "",
-//         state: "",
-//         address: "",
-//         start_time: "",
-//         end_time: ""
-//         })
-//       })
-//     }
-//   }, [props.match.params.postId])
-
-
-//   useEffect(() => {
-//       getRentalPosts()
-//   }, [])
-
+  Since the input fields are bound to the values of
+  the properties of this state variable, you need to
+  provide some default values.
+  */
  
+//  const editMode = true
+ 
+//  const getRentalPostInEditMode = () => {
+//    if (editMode) {
+//      const rentalpostId = parseInt(props.match.params.rentalpostId);
+//      const selectedRentalPost = rentalpost.find((rp) => rp.id === rentalpostId) || {};
+//      setRentalPost(selectedRentalPost);
+//     }
+//   };
 
+
+// console.log(editMode)
+
+  useEffect(() => {
+    if ("post" in props.match.params) {
+      getSingleRentalPost(props.match.params.postId).then((post) => {
+        setCurrentRentalPost({
+        description: "",
+        maxLength: "",
+        city: "",
+        state: "",
+        address: "",
+        start_time: "",
+        end_time: ""
+        })
+      })
+    }
+  }, [props.match.params.postId])
+
+
+  useEffect(() => {
+    getRentalPosts();
+  }, []);
+
+  // useEffect(() => {
+  //   getRentalPostInEditMode();
+  // }, [rentalpost]);
 
 
   /*

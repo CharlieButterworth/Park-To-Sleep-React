@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom"
-import { useLocation, useHistory,} from "react-router-dom"
+import { useLocation, useHistory, useParams } from "react-router-dom"
 import React, { useContext, useEffect, useState,} from "react"
 import { RentalPostContext } from "./RentalPostProvider"
 import "./RentalPost.css"
@@ -22,6 +22,10 @@ export const UsersRentalPost = ({ rentalpost, props }) => {
       });
     }
   };
+
+  console.log("PARAMS", useParams())
+
+  
 
     if (localStorage.getItem("pts_token")) {
 
@@ -52,14 +56,18 @@ export const UsersRentalPost = ({ rentalpost, props }) => {
                     }}
                 >Delete Rental Post</button>
 
-                <button
-        onClick={() => {
-          props.history.push({
-            pathname: `/rentalpost/edit/${rentalpost.id}`,
-          });
-        }}
-      >
+                <button onClick = {evt => {
+                  evt.preventDefault()
+                  setRentalPost({})
+                }}>
+                <Link 
+              to={{
+                  pathname: `/rentalposts/${rentalpost.id}/edit`,
+                  state: {chosenPost: rentalpost}
+                }}
+                >
         Edit Post
+        </Link>
       </button>
             </section>
         )

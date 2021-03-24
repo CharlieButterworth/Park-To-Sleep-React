@@ -7,6 +7,7 @@ export const RentalPostProvider = (props) => {
 
   const [posts, setRentalPosts] = useState([])
   const [post, setRentalPost] = useState({})
+  const [editpost, setEditPost] = useState([])
 
 
 
@@ -44,6 +45,7 @@ const addRentalPost = post => {
 
     }
 
+
 const deleteRentalPost = (id) => {
         return fetch(`http://localhost:8000/rentalposts/${id}`, {
             method: "DELETE",
@@ -67,10 +69,11 @@ const getRentalPostsByUserId = (userId) => {
 
 
  const updatePost = (post) => {
-    return fetch(`http://localhost:8000/posts/${post.id}`, {
+    return fetch(`http://localhost:8000/rentalposts/${post.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Token ${localStorage.getItem("pts_token")}`,
       },
       body: JSON.stringify(post),
     }).then(getRentalPosts)
@@ -96,7 +99,7 @@ const bookSpot = (date, post) => {
    return (
     <RentalPostContext.Provider
       value={{
-        getRentalPosts, posts, getRentalPostById, updatePost, post, addRentalPost, deleteRentalPost, getRentalPostsByUserId, bookSpot
+        getRentalPosts, posts, setRentalPost, getRentalPostById, updatePost, post, addRentalPost, deleteRentalPost, getRentalPostsByUserId, bookSpot
       }}
     >
       {props.children}

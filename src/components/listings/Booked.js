@@ -24,6 +24,7 @@ console.log(booked)
             <p>State: {booked.rental_spot.state} </p>
             <p>First Name: {booked.rental_spot.rentee.pts_user.first_name} </p>
             <p>First Last: {booked.rental_spot.rentee.pts_user.last_name} </p>
+            <p>Email: {booked.rental_spot.rentee.pts_user.username} </p>
 
             
 
