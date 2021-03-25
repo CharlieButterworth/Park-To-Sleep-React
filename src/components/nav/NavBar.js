@@ -4,10 +4,11 @@ import "./NavBar.css"
 
 export const NavBar = (props) => {
     return (
-        <ul className="navbar">
-            <li className="navbar__item">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
                 <Link className="navbar__link" to="/availablespots">All Spots</Link>
-            </li>
+            </li >
             <li className="navbar__item">
                 <Link className="navbar__link" to="/listings">Listings</Link>
             </li>
@@ -20,7 +21,7 @@ export const NavBar = (props) => {
             {
                 (localStorage.getItem("pts_token") !== null) ?
                     <li className="nav-item">
-                        <button className="nav-link fakeLink"
+                        <button type="button" class="btn btn-primary btn-sm"
                             onClick={() => {
                                 localStorage.removeItem("pts_token")
                                 props.history.push({ pathname: "/" })
@@ -36,5 +37,6 @@ export const NavBar = (props) => {
                         </li>
                     </>
             }        </ul>
-    )
+            </nav>
+            )
 }

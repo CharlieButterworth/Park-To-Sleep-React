@@ -17,7 +17,8 @@ export const UsersBookingList = (props) => {
 
     return (
         <>
-        <h3>All Bookings</h3>
+        
+        <h3>My Bookings</h3>
             <div className="bookinglist">
 
                 {

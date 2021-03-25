@@ -11,7 +11,7 @@ export const RentalPost = ({ rentalpost, props }) => {
                 <Link to={{ pathname: `/rentalposts/${rentalpost.id}`, state: { chosenPost: rentalpost } }}>
                         Title: {rentalpost.description}
                     </Link>
-               <p>Description: {rentalpost.description} </p>
+               {/* <p>Description: {rentalpost.description} </p> */}
                 <p>Max Length: {rentalpost.max_length} ft</p>
                 <p>City: {rentalpost.city}</p>
                 <p>State: {rentalpost.state}</p>

@@ -23,7 +23,7 @@ export const UsersRentalPost = ({ rentalpost, props }) => {
     }
   };
 
-  console.log("PARAMS", useParams())
+ 
 
   
 
@@ -46,7 +46,7 @@ export const UsersRentalPost = ({ rentalpost, props }) => {
                 <p>End Time: {rentalpost.end_time}</p>
                 <p>First Name: {rentalpost.rentee.pts_user.first_name}</p>
                 <p>Last Name: {rentalpost.rentee.pts_user.last_name}</p>
-                <button className="btn--release"
+                <button type="button" class="btn btn-danger disabled"
                     onClick={() => {
 
                         confirmDeleteRentalPost()
@@ -56,7 +56,7 @@ export const UsersRentalPost = ({ rentalpost, props }) => {
                     }}
                 >Delete Rental Post</button>
 
-                <button onClick = {evt => {
+                <button type="button" class="btn btn-outline-secondary" onClick = {evt => {
                   evt.preventDefault()
                   setRentalPost({})
                 }}>

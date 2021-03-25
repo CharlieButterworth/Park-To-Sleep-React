@@ -79,19 +79,11 @@ export const RentalPostDetails = ({rentalpost, props}) => {
                 <h3 className="post__title">First Name: {location.state.chosenPost.rentee.pts_user.first_name}</h3>
                 <h3 className="post__title">Last Name: {location.state.chosenPost.rentee.pts_user.last_name}</h3>
 
-        <button onClick={() => {
+        <button type="button" class="btn btn-success disabled" onClick={() => {
                     history.push(`/bookingform/${location.state.chosenPost.id}/book`)
                 }}>Book!</button>
 
-        <button
-        onClick={() => {
-          history.push(
-            `/rentalposts/${params.id}/edit`,
-          );
-        }}
-      >
-        Edit Post
-      </button>
+        
         </section>
         </>
 

@@ -27,6 +27,7 @@ export const ListingList = (props, rentalpost) => {
 
     return (
         <>
+        
         <h3>My Listings</h3>
             <div className="listinglist">
 
