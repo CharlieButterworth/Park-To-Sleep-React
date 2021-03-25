@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useContext, useState, useEffect, response } from "react"
 import { useLocation, useHistory, useParams} from "react-router-dom"
 import { RentalPostContext } from "../rentalposts/RentalPostProvider"
 
@@ -14,8 +14,7 @@ export const BookingForm = (rentalpost, props, date) => {
         const [currentBooking, setCurrentBooking] = useState({
             date: ""
         })
-
-
+    
 
     useEffect(() => {
         
@@ -27,9 +26,8 @@ export const BookingForm = (rentalpost, props, date) => {
     newBookingState[domEvent.target.name] = domEvent.target.value
     setCurrentBooking(newBookingState)
   }
-
-  console.log(post)
-return (
+  
+  return (
     <div className="BookingForm">
       <h2 className="RentalPostForm__title">Book Spot</h2>
       <fieldset>
@@ -51,14 +49,17 @@ return (
       <button
           type="submit"
           onClick={(evt) => {
+           
             // Prevent form from being submitted
             evt.preventDefault()
-
+ 
             // Send POST request to your API
             bookSpot({  
               date: currentBooking.date
               
-            }, location.id).then(() => history.push("/rentalposts"))
+            }, location.id) 
+            
+            
           }}
           className="btn btn-primary"
         >

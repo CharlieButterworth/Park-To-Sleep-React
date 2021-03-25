@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react"
+import { useLocation, useHistory, useParams} from "react-router-dom"
 
 
 export const RentalPostContext = React.createContext()
@@ -8,6 +9,8 @@ export const RentalPostProvider = (props) => {
   const [posts, setRentalPosts] = useState([])
   const [post, setRentalPost] = useState({})
   const [editpost, setEditPost] = useState([])
+  
+  const history = useHistory()
 
 
 
@@ -90,9 +93,19 @@ const bookSpot = (date, post) => {
             body: JSON.stringify(date)
         
         })
-            .then(response => response.json())
+        .then((response) => {
+          if (response.status === 422) {
+     alert("This date is outside of the set range")
+
+    
+  } else {
+    response.json()
+    history.push("/bookings")
+        }
             
     }
+        )
+  }
 
 
 

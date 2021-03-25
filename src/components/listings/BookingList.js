@@ -16,20 +16,20 @@ export const BookingList = (props) => {
 console.log(bookedspots)
 
     return (
-        <>
-        <h3>My Bookings</h3>
-            <div className="bookinglist">
-
+        
+        <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
+  <div class="card-header">My Bookings</div>
+  <div class="card-body">
                 {
                     bookedspots.map(b => {
                        return <Booking key={b.id} booking={b} props={props}/>
                         
                     }) 
                 }
-
-            </div>
-
-        </>
+    
+  </div>
+</div>
+    
     )
 
 }
