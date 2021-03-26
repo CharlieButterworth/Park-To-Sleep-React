@@ -2,7 +2,7 @@ import React from "react"
 import { Link, useHistory } from "react-router-dom"
 import { useContext, useEffect, useLocation } from "react"
 import { BookingContext } from "./BookingProvider"
-import "./Booking.css"
+
 
 export const Booking = ({booking, props}) => {
     if (localStorage.getItem("pts_token")) {
@@ -11,24 +11,25 @@ export const Booking = ({booking, props}) => {
 
 
         return (
-
+<div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+  <div class="card-header">Rental Spot Details</div>
+  <div class="card-body">
+    <h4 class="card-title">Success card title</h4>
+            <p class="card-text">Spot Owner: {booking.rental_spot.rentee} </p>
+            <p class="card-text">Address: {booking.rental_spot.address} </p>
+            <p class="card-text">City: {booking.rental_spot.city} </p>
+            <p class="card-text">State: {booking.rental_spot.state} </p>
+            <p class="card-text">Max Length: {booking.rental_spot.max_length} ft.</p>
+            <p class="card-text">Start Date: {booking.rental_spot.start_time} </p>
+            <p class="card-text">End Date: {booking.rental_spot.end_time} </p>
             
-            <section className="bookingCard">
+            <p class="card-text">Date Booked For: {booking.date} </p>
+            <p class="card-text">Booked By: {booking.renter.pts_user} </p>
 
-            <h3>Rental Spot Details</h3>
-            <p>Spot Owner: {booking.rental_spot.rentee} </p>
-            <p>Address: {booking.rental_spot.address} </p>
-            <p>City: {booking.rental_spot.city} </p>
-            <p>State: {booking.rental_spot.state} </p>
-            <p>Max Length: {booking.rental_spot.max_length} ft.</p>
-            <p>Start Date: {booking.rental_spot.start_time} </p>
-            <p>End Date: {booking.rental_spot.end_time} </p>
-            
-            <p>Date Booked For: {booking.date} </p>
-            <p>Booked By: {booking.renter.pts_user} </p>
+          
 
-            </section>
-
+  </div>
+</div>
 
         )
 

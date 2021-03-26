@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { BookingContext } from "./BookingProvider"
 import {Booking} from "./Booking"
-import "./Booking.css"
+
 
 
 export const BookingList = (props) => {

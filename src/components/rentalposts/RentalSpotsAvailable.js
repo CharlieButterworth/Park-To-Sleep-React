@@ -13,7 +13,7 @@ export const RentalSpotsAvailable = ({props}) => {
 
     return (
         <>
-        <h3>Rentals Spots Available</h3>
+        
         {
             posts.map(p => {
                 return <RentalPost key={p.id} rentalpost={p} props={props}/>
