@@ -33,58 +33,29 @@ export const RentalPostDetails = ({rentalpost, props}) => {
 
     console.log("PROPS", props)
   
-    return post.is_current_user ? (
+    return  (
         <>
-            <section className="post">
-                <h3>Post Detail</h3>
-                <h3 className="post__title">Description: {post.description}</h3>
-                <h3 className="post__title">Max Length: {post.max_length}</h3>
-                <h3 className="post__title">City: {post.city}</h3>
-                <h3 className="post__title">State: {post.state}</h3>
-                <h3 className="post__title">Address: {post.address}</h3>
-                <h3 className="post__title">Date/Time Available: {post.start_time}</h3>
-                <h3 className="post__title">Date/Time Closing: {post.end_time}</h3>
-                <h3 className="post__title">First Name: {location.state.chosenPost.rentee.pts_user.first_name}</h3>
-                <h3 className="post__title">Last Name: {location.state.chosenPost.rentee.pts_user.last_name}</h3>
-
-                {/* <button onClick={() => {
-                    history.push(`/bookingform/${location.state.chosenPost.id}/book`)
-                }}>Book!</button> */}
-
-                <button className="btn--release"
-                    onClick={() => {
-
-                        confirmDeleteRentalPost()
-                            .then(() => {
-                                history.push("/rentalposts")
-                            })
-                    }}
-                >Delete Rental Post</button>
-
-            </section>
-
-
-        </>
-    ) : (
-        <>
-        <section className="post">
-                <h3>Post Detail</h3>
-                <h3 className="post__title">Description: {post.description}</h3>
-                <h3 className="post__title">Max Length: {post.max_length}</h3>
-                <h3 className="post__title">City: {post.city}</h3>
-                <h3 className="post__title">State: {post.state}</h3>
-                <h3 className="post__title">Address: {post.address}</h3>
-                <h3 className="post__title">Date/Time Available: {post.start_time}</h3>
-                <h3 className="post__title">Date/Time Closing: {post.end_time}</h3>
-                <h3 className="post__title">First Name: {location.state.chosenPost.rentee.pts_user.first_name}</h3>
-                <h3 className="post__title">Last Name: {location.state.chosenPost.rentee.pts_user.last_name}</h3>
+        <div class="card text-white bg-dark mb-3" style={{maxwidth: '20rem;'}}>
+  <div class="card-header">Post Detail</div>
+  <div class="card-body">            
+                <p class="card-text">Description: {post.description}</p>
+                <p cclass="card-text">Max Length: {post.max_length}</p>
+                <p class="card-text">City: {post.city}</p>
+                <p class="card-text">State: {post.state}</p>
+                <p class="card-text">Address: {post.address}</p>
+                <p class="card-text">Date/Time Available: {post.start_time}</p>
+                <p class="card-text">Date/Time Closing: {post.end_time}</p>
+                <p class="card-text">First Name: {location.state.chosenPost.rentee.pts_user.first_name}</p>
+                <p class="card-text">Last Name: {location.state.chosenPost.rentee.pts_user.last_name}</p>
 
         <button type="button" class="btn btn-success disabled" onClick={() => {
-                    history.push(`/bookingform/${location.state.chosenPost.id}/book`)
-                }}>Book!</button>
+            history.push(`/bookingform/${location.state.chosenPost.id}/book`)
+        }}>Book!</button>
 
         
-        </section>
+        </div>
+      </div>
+       
         </>
 
     )

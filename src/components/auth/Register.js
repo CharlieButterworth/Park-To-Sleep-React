@@ -45,7 +45,7 @@ export const Register = (props) => {
                 .then(res => {
                     if ("token" in res) {
                         localStorage.setItem("pts_token", res.token)
-                        props.history.push("/")
+                        props.history.push("/availablespots")
                     }
                 })
         } else {

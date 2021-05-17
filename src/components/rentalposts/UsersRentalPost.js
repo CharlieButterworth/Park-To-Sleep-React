@@ -30,31 +30,27 @@ export const UsersRentalPost = ({ rentalpost, props }) => {
     if (localStorage.getItem("pts_token")) {
 
         return (
-            <section className="rentalpostCard">
-                
-                <h3>
-                    Title: {rentalpost.description}
-                    </h3>
-                    
-               <p>Description: {rentalpost.description} </p>
-                <p>Max Length: {rentalpost.max_length} ft</p>
-                <p>City: {rentalpost.city}</p>
-                <p>State: {rentalpost.state}</p>
-                <p>Address: {rentalpost.address}</p>
+          <div class="card text-white bg-dark mb-3" style={{maxwidth: '20rem;'}}>
+  <div class="card-header">Rental Spot</div>
+  <div class="card-body">
+               
+               <p class="card-text">Description: {rentalpost.description} </p>
+                <p class="card-text">Max Length: {rentalpost.max_length} ft</p>
+                <p class="card-text">City: {rentalpost.city}</p>
+                <p class="card-text">State: {rentalpost.state}</p>
+                <p class="card-text">Address: {rentalpost.address}</p>
                 {/* <p>Phone Number: {rentalpost.phone}</p> */}
-                <p>Start Time: {rentalpost.start_time}</p>
-                <p>End Time: {rentalpost.end_time}</p>
-                <p>First Name: {rentalpost.rentee.pts_user.first_name}</p>
-                <p>Last Name: {rentalpost.rentee.pts_user.last_name}</p>
+                <p class="card-text">Start Time: {rentalpost.start_time}</p>
+                <p class="card-text">End Time: {rentalpost.end_time}</p>
                 <button type="button" class="btn btn-danger disabled"
                     onClick={() => {
-
-                        confirmDeleteRentalPost()
-                        .then(() => {
-                                props.history.push("/availablespots")
-                            })
+                      
+                      confirmDeleteRentalPost()
+                      .then(() => {
+                        props.history.push("/availablespots")
+                      })
                     }}
-                >Delete Rental Post</button>
+                    >Delete Rental Post</button>
 
                 <button type="button" class="btn btn-outline-secondary" onClick = {evt => {
                   evt.preventDefault()
@@ -62,14 +58,16 @@ export const UsersRentalPost = ({ rentalpost, props }) => {
                 }}>
                 <Link 
               to={{
-                  pathname: `/rentalposts/${rentalpost.id}/edit`,
-                  state: {chosenPost: rentalpost}
-                }}
-                >
+                pathname: `/rentalposts/${rentalpost.id}/edit`,
+                state: {chosenPost: rentalpost}
+              }}
+              >
         Edit Post
         </Link>
       </button>
-            </section>
+           
+                  </div>
+                </div>
         )
     } else {
         return (

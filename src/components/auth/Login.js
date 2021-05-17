@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import "./Auth.css"
+import logo from "./logo2.png"
 
 
 export const Login = props => {
@@ -42,8 +43,9 @@ export const Login = props => {
             </dialog>
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Sleep To Park</h1>
-                    <h2>Please sign in</h2>
+                    <img src={logo}></img>
+                    {/* <h1 class="text-success">Park To Sleep</h1> */}
+                    <p>Please sign in</p>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
                         <input ref={email} type="email" id="email" className="form-control"  placeholder="Email address" required autoFocus />

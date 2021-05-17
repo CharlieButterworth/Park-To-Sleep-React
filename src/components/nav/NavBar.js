@@ -1,11 +1,14 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import "./NavBar.css"
+import logo from "./logo.png"
+
+
 
 export const NavBar = (props) => {
     return (
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <ul class="navbar-nav mr-auto">
+            
             <li class="nav-item active">
                 <Link className="navbar__link" to="/availablespots">All Spots</Link>
             </li >
