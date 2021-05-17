@@ -7,7 +7,7 @@ export const RentalPostForm = (props, rentalpost) => {
   const params = useParams()
   const { addRentalPost, getSingleRentalPost, Posts, updatePost, getRentalPosts, setRentalPost, post } = useContext(RentalPostContext)
 
-  
+  console.log(rentalpost)
   const [currentRentalPost, setCurrentRentalPost] = useState({
     description: "",
     maxLength: "",
@@ -105,6 +105,19 @@ export const RentalPostForm = (props, rentalpost) => {
           />
         </div>
       </fieldset>
+      <fieldset>
+        <div className="form-group">
+          <label htmlFor="content">Address: </label>
+          <input
+            type="text"
+            name="address"
+            required
+            className="form-control"
+            value={currentRentalPost.address}
+            onChange={changeRentalPostState}
+          />
+        </div>
+      </fieldset>
 
       <fieldset>
         <div className="form-group">
@@ -134,25 +147,12 @@ export const RentalPostForm = (props, rentalpost) => {
         </div>
       </fieldset>
 
-      <fieldset>
-        <div className="form-group">
-          <label htmlFor="content">Address: </label>
-          <input
-            type="text"
-            name="address"
-            required
-            className="form-control"
-            value={currentRentalPost.address}
-            onChange={changeRentalPostState}
-          />
-        </div>
-      </fieldset>
 
       <fieldset>
         <div className="form-group">
-          <label htmlFor="content">Start Time: </label>
+          <label htmlFor="content">Start Date: </label>
           <input
-            type="datetime-local"
+            type="date"
             name="start_time"
             required
             className="form-control"
@@ -164,9 +164,9 @@ export const RentalPostForm = (props, rentalpost) => {
 
       <fieldset>
         <div className="form-group">
-          <label htmlFor="content">End Time: </label>
+          <label htmlFor="content">End Date: </label>
           <input
-            type="datetime-local"
+            type="date"
             name="end_time"
             required
             className="form-control"

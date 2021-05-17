@@ -36,7 +36,7 @@ export const BookingForm = (rentalpost, props, date) => {
         <div className="form-group">
           <label htmlFor="description">Date: </label>
           <input
-            type="datetime-local"
+            type="date"
             name="date"
             required
             autoFocus
