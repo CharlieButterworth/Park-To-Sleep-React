@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import "bootswatch/dist/sandstone/bootstrap.min.css";
 import './index.css';
-
 import reportWebVitals from './reportWebVitals';
 import { ParkToSleep } from './components/ParkToSleep';
 import { BrowserRouter as Router } from 'react-router-dom';
