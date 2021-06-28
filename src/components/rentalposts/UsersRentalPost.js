@@ -39,7 +39,6 @@ export const UsersRentalPost = ({ rentalpost, props }) => {
                 <p class="card-text">City: {rentalpost.city}</p>
                 <p class="card-text">State: {rentalpost.state}</p>
                 <p class="card-text">Address: {rentalpost.address}</p>
-                {/* <p>Phone Number: {rentalpost.phone}</p> */}
                 <p class="card-text">Start Time: {rentalpost.start_time}</p>
                 <p class="card-text">End Time: {rentalpost.end_time}</p>
                 <button type="button" class="btn btn-danger disabled"
