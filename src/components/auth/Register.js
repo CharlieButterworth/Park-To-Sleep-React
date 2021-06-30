@@ -27,7 +27,6 @@ export const Register = (props) => {
                 "password": password.current.value,
                 "city": city.current.value, 
                 "state": state.current.value,
-                "country": country.current.value,
                 "address": address.current.value,
                 "phone": phone.current.value
 
