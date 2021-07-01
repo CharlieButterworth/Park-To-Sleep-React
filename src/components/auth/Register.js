@@ -87,10 +87,6 @@ export const Register = (props) => {
                     <textarea ref={state} name="state" className="form-control" placeholder="State" />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="country"> Country </label>
-                    <textarea ref={country} name="country" className="form-control" placeholder="Country" />
-                </fieldset>
-                <fieldset>
                     <label htmlFor="phone"> Phone Number </label>
                     <textarea ref={phone} name="phone" className="form-control" placeholder="Phone Number" />
                 </fieldset>
